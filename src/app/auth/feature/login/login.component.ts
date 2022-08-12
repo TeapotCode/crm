@@ -23,7 +23,7 @@ export class LoginComponent {
     if (this.form.get('login')?.errors || this.form.get('password')?.errors) return
 
     this.auth.login()
-    this.router.navigate(['homepage'])
+    this.router.navigate(['dashboard'])
   }
 
 }

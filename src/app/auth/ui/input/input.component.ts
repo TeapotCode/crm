@@ -1,27 +1,20 @@
-import {Component, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {Component, Input, Self} from '@angular/core';
+import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl} from "@angular/forms";
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: InputComponent,
-    multi: true
-  }]
 })
 export class InputComponent implements ControlValueAccessor {
 
-  @Input() type: 'text' | 'password' = 'text'
+  @Input() type: 'text' | 'password' | 'email' = 'text'
 
   value: string = "";
   disabled = false;
 
-  onChange = (value: string) => {
-  }
-  onTouched = () => {
-  }
+  onChange = (value: string) => {}
+  onTouched = () => {}
 
   registerOnChange(fn: any): void {
     this.onChange = fn
@@ -31,15 +24,17 @@ export class InputComponent implements ControlValueAccessor {
     this.onTouched = fn
   }
 
-  writeValue(valueRecived: string): void {
-    this.value = valueRecived
+  writeValue(valueReceived: string): void {
+    this.value = valueReceived
   }
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled
   }
 
-  constructor() {
+
+  constructor(@Self() public controlDirective: NgControl) {
+    controlDirective.valueAccessor = this
   }
 }
 
