@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: async () => (await import('./auth/feature/auth.module')).AuthModule
   },
   {
+    path: 'dashboard',
+    loadChildren: async () => (await import('./dashboard/feature/dashboard.module')).DashboardModule
+  },
+  {
     path: '**',
     redirectTo: ''
   }
