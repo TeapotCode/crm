@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../shared/data-access/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,13 @@ export class LoginComponent {
     password: new FormControl('123', {validators: [Validators.required], nonNullable: true})
   })
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {
   }
 
   onSubmit() {
     if (this.form.get('login')?.errors || this.form.get('password')?.errors) return
 
-    localStorage.setItem('isUserLogin', '1')
+    this.auth.login()
     this.router.navigate(['homepage'])
   }
 

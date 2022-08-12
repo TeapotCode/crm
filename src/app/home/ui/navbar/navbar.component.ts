@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {AuthService} from "../../../shared/data-access/auth.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +9,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 })
 export class NavbarComponent {
 
-  constructor() { }
+  isLoggedIn$ = this.auth.isLoggedIn$;
+
+  constructor(private auth: AuthService) { }
 
 }
