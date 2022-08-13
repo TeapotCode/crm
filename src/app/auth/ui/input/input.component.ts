@@ -5,6 +5,11 @@ import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgC
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: InputComponent,
+    multi: true
+  }]
 })
 export class InputComponent implements ControlValueAccessor {
 
@@ -33,8 +38,7 @@ export class InputComponent implements ControlValueAccessor {
   }
 
 
-  constructor(@Self() public controlDirective: NgControl) {
-    controlDirective.valueAccessor = this
+  constructor() {
   }
 }
 
