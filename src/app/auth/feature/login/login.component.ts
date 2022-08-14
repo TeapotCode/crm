@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, NonNullableFormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../shared/data-access/auth.service";
 
@@ -12,11 +12,11 @@ import {AuthService} from "../../../shared/data-access/auth.service";
 export class LoginComponent {
 
   form = this.fb.group({
-    login: new FormControl('adrian', {validators: [Validators.required], nonNullable: true}),
-    password: new FormControl('123', {validators: [Validators.required], nonNullable: true})
+    login: new FormControl('adrian', Validators.required),
+    password: new FormControl('123', Validators.required)
   })
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {
+  constructor(private fb: NonNullableFormBuilder, private router: Router, private auth: AuthService) {
   }
 
   onSubmit() {
