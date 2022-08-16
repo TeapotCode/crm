@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -32,14 +32,16 @@ export class InputComponent implements ControlValueAccessor {
 
   writeValue(valueReceived: string): void {
     this.value = valueReceived
+    this.changeRef.detectChanges()
   }
 
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled
+    this.changeRef.detectChanges()
   }
 
 
-  constructor() {
+  constructor(private changeRef: ChangeDetectorRef) {
   }
 }
 

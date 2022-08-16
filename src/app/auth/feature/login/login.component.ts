@@ -28,10 +28,15 @@ export class LoginComponent {
   }
 
   onSubmit() {
-    if (this.form.get('login')?.errors || this.form.get('password')?.errors) return
+    if (this.login.errors || this.password.errors) return
 
-    this.auth.login()
-    this.router.navigate(['dashboard'])
+    if(this.login.value === 'adrian' && this.password.value === '123') {
+      this.auth.login()
+      this.router.navigate(['dashboard'])
+    } else {
+      this.password.setValue('')
+      this.form.setErrors({invalidCredentials: true});
+    }
   }
 
 }

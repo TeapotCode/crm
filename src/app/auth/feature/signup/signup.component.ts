@@ -38,7 +38,7 @@ export class SignupComponent {
     if (!this.form.valid) return
 
     this.auth.login()
-    this.router.navigate(['dashboard'])
+    this.router.navigate(['dashboard']).then()
   }
 
 
