@@ -1,5 +1,5 @@
-import {Component, Input, Self} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgControl} from "@angular/forms";
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
   selector: 'app-input',
@@ -9,7 +9,8 @@ import {ControlValueAccessor, FormControl, NG_VALIDATORS, NG_VALUE_ACCESSOR, NgC
     provide: NG_VALUE_ACCESSOR,
     useExisting: InputComponent,
     multi: true
-  }]
+  }],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent implements ControlValueAccessor {
 

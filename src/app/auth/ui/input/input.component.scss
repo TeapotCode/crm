@@ -7,3 +7,9 @@
     @apply text-red-600 dark:text-red-500 peer-focus:text-red-600 peer-focus:dark:text-red-500;
   }
 }
+
+:host.ng-invalid, :host.ng-valid {
+  label::after {
+    content: '*';
+  }
+}

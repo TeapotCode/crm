@@ -9,25 +9,25 @@
 
   <app-input class="w-4/5 self-center" formControlName="login">
     Login
-  <ng-container error *ngIf="login?.dirty && login?.getError('required')">Name cannot be empty!</ng-container>
+  <ng-container error *ngIf="login.dirty && login.getError('required')">Name cannot be empty!</ng-container>
   </app-input>
 
 
   <app-input type="email" class="w-4/5 self-center" formControlName="email">
     Email
-    <ng-container error *ngIf="email?.dirty && email?.getError('required')">Email cannot be empty!</ng-container>
-    <ng-container error *ngIf="email?.dirty && email?.getError('email')">Only proper email</ng-container>
+    <ng-container error *ngIf="email.dirty && email.getError('required')">Email cannot be empty!</ng-container>
+    <ng-container error *ngIf="email.dirty && email.getError('email')">Only proper email</ng-container>
   </app-input>
 
 
 
   <app-input type="password" class="w-4/5 self-center" formControlName="password">Password
-    <ng-container *ngIf="password?.dirty && password?.getError('required')" error>Passwords can not be empty</ng-container>
-    <ng-container *ngIf="password?.dirty && password?.getError('minlength')" error>Passwords must be longer</ng-container>
+    <ng-container *ngIf="password.dirty && password.getError('required')" error>Passwords can not be empty</ng-container>
+    <ng-container *ngIf="password.dirty && password.getError('minlength')" error>Passwords must be longer</ng-container>
   </app-input>
 
   <app-input type="password" class="w-4/5 self-center" formControlName="confirmPassword">Confirm password
-    <ng-container *ngIf="confirmPassword?.dirty && this.form.getError('notSame')" error>Passwords is not the same</ng-container>
+    <ng-container *ngIf="confirmPassword.dirty && this.form.getError('notSame')" error>Passwords is not the same</ng-container>
   </app-input>
 
 

@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, NonNullableFormBuilder, Validators} from "@angular/forms";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {FormControl, NonNullableFormBuilder, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {AuthService} from "../../../shared/data-access/auth.service";
 
@@ -17,6 +17,14 @@ export class LoginComponent {
   })
 
   constructor(private fb: NonNullableFormBuilder, private router: Router, private auth: AuthService) {
+  }
+
+  get login() {
+    return this.form.controls.login
+  }
+
+  get password() {
+    return this.form.controls.password
   }
 
   onSubmit() {
