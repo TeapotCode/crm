@@ -1,0 +1,13 @@
+::ng-deep table {
+  thead tr {
+    @apply bg-blue-200 text-left;
+  }
+
+  tbody tr {
+     @apply hover:bg-gray-200;
+  }
+
+  th, td {
+    @apply p-2
+  }
+}

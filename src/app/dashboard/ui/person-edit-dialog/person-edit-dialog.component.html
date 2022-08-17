@@ -1,0 +1,23 @@
+<app-table [data]="[data]">
+
+  <ng-template #headers >
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+  </ng-template>
+
+  <ng-template #rows let-row>
+    <td class="bg-white">
+      <input type="text" [formControl]="firstname">
+    </td>
+    <td class="bg-white">
+      <input type="text" [formControl]="lastname">
+    </td>
+    <td class="bg-white">
+      <input type="number" [formControl]="age">
+    </td>
+  </ng-template>
+</app-table>
+
+<button (click)="onCancel()">Cancel</button>
+<button (click)="onApply()">Apply</button>
