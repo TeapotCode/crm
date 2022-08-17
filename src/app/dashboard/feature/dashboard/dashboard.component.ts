@@ -22,15 +22,16 @@ export class DashboardComponent {
   constructor(private dialog: MatDialog, private changeRef: ChangeDetectorRef) {
   }
 
-  toPerson(value: any): value is Person {
-    return value
+  toPerson(value: any) {
+    return (value as Person)
   }
 
-  onEdit(person: Person) {
-    let dialogRef = this.dialog.open(PersonEditDialogComponent, {data: person})
+  onEdit(edit_person: Person) {
+    let dialogRef = this.dialog.open(PersonEditDialogComponent, {data: edit_person})
+
     dialogRef.afterClosed().subscribe(value => {
-      if (this.toPerson(value))
-        this.personList = this.personList.map(person => person.id === value.id ? value : person)
+      if (value)
+        this.personList = this.personList.map(person => person.id === edit_person.id ? value : person)
 
       this.changeRef.markForCheck()
     })
