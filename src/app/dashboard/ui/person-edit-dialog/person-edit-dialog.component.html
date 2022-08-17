@@ -1,12 +1,12 @@
 <app-table [data]="[data]">
 
-  <ng-template #headers>
+  <ng-template appTableHeader>
     <th>First Name</th>
     <th>Last Name</th>
     <th>Age</th>
   </ng-template>
 
-  <ng-template #rows let-row>
+  <ng-container *appTableRow="[data]">
     <td class="bg-white">
       <input type="text" [formControl]="firstname">
     </td>
@@ -16,7 +16,7 @@
     <td class="bg-white">
       <input type="number" [formControl]="age">
     </td>
-  </ng-template>
+  </ng-container>
 </app-table>
 
 <div class="bg-white flex justify-around h-8">

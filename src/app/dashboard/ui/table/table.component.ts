@@ -1,5 +1,40 @@
-import {ChangeDetectionStrategy, Component, ContentChild, Input, TemplateRef} from '@angular/core';
-import {Person} from "../../utils/person.interface";
+import {ChangeDetectionStrategy, Component, ContentChild, Directive, Input, TemplateRef} from '@angular/core';
+
+interface TableHeaderTemplateContext<TItem extends object> {
+  $implicit: TItem[];
+}
+
+@Directive({
+  selector: 'ng-template[appTableHeader]',
+})
+export class TableHeaderTemplateDirective<TItem extends object> {
+  @Input('appTableHeader') data!: TItem[] | '';
+
+  static ngTemplateContextGuard<TContextItem extends object>(
+    directive: TableHeaderTemplateDirective<TContextItem>,
+    context: unknown
+  ): context is TableHeaderTemplateContext<TContextItem> {
+    return true;
+  }
+}
+
+interface TableRowTemplateContext<TItem extends object> {
+  $implicit: TItem;
+}
+
+@Directive({
+  selector: 'ng-template[appTableRow]',
+})
+export class TableRowTemplateDirective<TItem extends object> {
+  @Input('appTableRow') data!: TItem[];
+
+  static ngTemplateContextGuard<TContextItem extends object>(
+    directive: TableRowTemplateDirective<TContextItem>,
+    context: unknown
+  ): context is TableRowTemplateContext<TContextItem> {
+    return true;
+  }
+}
 
 @Component({
   selector: 'app-table',
@@ -7,11 +42,13 @@ import {Person} from "../../utils/person.interface";
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent {
-  @ContentChild('rows') rows: TemplateRef<any> | undefined;
-  @ContentChild('headers') headers: TemplateRef<any> | undefined;
+export class TableComponent<TItem extends object> {
+  @Input() data!: TItem[];
 
-  @Input() data!: unknown[];
+  @ContentChild(TableRowTemplateDirective, {read: TemplateRef}) rows?: TemplateRef<any>;
+  @ContentChild(TableHeaderTemplateDirective, {read: TemplateRef}) headers?: TemplateRef<any>;
+
 
   constructor() { }
+
 }

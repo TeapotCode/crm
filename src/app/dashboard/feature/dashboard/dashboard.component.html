@@ -3,21 +3,21 @@
 
   <app-table [data]="personList">
 
-    <ng-template #headers>
+    <ng-container *appTableHeader="personList">
       <th>First Name</th>
       <th>Last Name</th>
       <th>Age</th>
       <th></th>
-    </ng-template>
+    </ng-container>
 
-    <ng-template #rows let-row>
+    <ng-container *appTableRow="personList; let row">
       <td class="peer">{{row.firstname | titlecase}}</td>
       <td class="peer">{{row.lastname | titlecase}}</td>
       <td class="peer">{{row.age}}</td>
-      <td class="bg-gray-100 cursor-pointer peer-hover:bg-gray-400 hover:bg-gray-400" (click)="onEdit(toPerson(row))">
+      <td class="bg-gray-100 cursor-pointer peer-hover:bg-gray-400 hover:bg-gray-400" (click)="onEdit(row)">
         <button class="">Edit</button>
       </td>
-    </ng-template>
+    </ng-container>
 
   </app-table>
 
