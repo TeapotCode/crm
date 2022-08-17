@@ -22,8 +22,8 @@ export class DashboardComponent {
   constructor(private dialog: MatDialog, private changeRef: ChangeDetectorRef) {
   }
 
-  toPerson(value: any) {
-    return value as Person
+  toPerson(value: any): value is Person {
+    return value
   }
 
   onEdit(person: Person) {
