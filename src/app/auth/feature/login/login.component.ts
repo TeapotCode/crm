@@ -30,7 +30,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.login.errors || this.password.errors) return
 
-    if(this.login.value === 'adrian' && this.password.value === '123') {
+    if(this.login.value === 'adrian' && this.password.value === '12345678') {
       this.auth.login()
       this.router.navigate(['dashboard'])
     } else {
