@@ -1,4 +1,4 @@
-<nav class="flex justify-between px-10 bg-blue-800 text-white py-1  font-bold">
+<nav class="flex justify-between px-10 bg-blue-800 text-white py-1 font-bold">
   <div class="self-center">Logo</div>
 
   <div class="flex gap-2 font-bold self-center">
@@ -8,13 +8,20 @@
     <div class="nav-item" routerLink="/about" routerLinkActive="active">
       About
     </div>
-    <div class="nav-item" routerLink="/dashboard" routerLinkActive="active" *ngIf="isLoggedIn$ | async">
+    <div
+      class="nav-item"
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      *ngIf="isLoggedIn$ | async"
+    >
       Dashboard
     </div>
   </div>
 
   <button
     routerLink="auth/login"
-    class="hover:bg-blue-700 h-100 px-4 rounded-2xl">Login
+    class="hover:bg-blue-700 h-100 px-4 rounded-2xl"
+  >
+    Login
   </button>
 </nav>

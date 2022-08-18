@@ -1,8 +1,8 @@
-import {Router, RouterModule, Routes} from "@angular/router";
-import {HomeComponent} from "./home/home.component";
-import {NgModule} from "@angular/core";
-import {AboutComponent} from "./about/about.component";
-import {LayoutComponent} from "../ui/layout/layout.component";
+import { Router, RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { NgModule } from '@angular/core';
+import { AboutComponent } from './about/about.component';
+import { LayoutComponent } from '../ui/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -12,25 +12,22 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'homepage',
-        pathMatch: "full"
+        pathMatch: 'full',
       },
       {
         path: 'homepage',
-        component: HomeComponent
+        component: HomeComponent,
       },
       {
         path: 'about',
-        component: AboutComponent
-      }
-    ]
+        component: AboutComponent,
+      },
+    ],
   },
-
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HomeRoutingModule {
-
-}
+export class HomeRoutingModule {}

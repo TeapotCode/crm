@@ -1,22 +1,22 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {TableComponent, TableHeaderTemplateDirective, TableRowTemplateDirective} from "./table.component";
-
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  TableComponent,
+  TableHeaderTemplateDirective,
+  TableRowTemplateDirective,
+} from './table.component';
 
 @NgModule({
   declarations: [
     TableComponent,
     TableRowTemplateDirective,
-    TableHeaderTemplateDirective
+    TableHeaderTemplateDirective,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   exports: [
     TableComponent,
     TableRowTemplateDirective,
-    TableHeaderTemplateDirective
-  ]
+    TableHeaderTemplateDirective,
+  ],
 })
-export class TableModule {
-}
+export class TableModule {}
