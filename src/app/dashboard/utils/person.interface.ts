@@ -1,6 +1,6 @@
 export interface Person {
-  id: symbol
-  firstname: string
-  lastname: string
+  id: number;
+  firstname: string;
+  lastname: string;
   age: number;
 }
