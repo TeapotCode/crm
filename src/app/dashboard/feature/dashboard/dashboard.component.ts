@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { Person } from '../../utils/person.interface';
 import { PersonEditDialogComponent } from '../../ui/person-edit-dialog/person-edit-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -32,10 +32,8 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let id = Number(this.activatedRoute.snapshot.queryParamMap.get('userId'));
-    let person = this.personList.find((person) => {
-      return person.id === id;
-    });
+    const id = Number(this.activatedRoute.snapshot.queryParamMap.get('userId'));
+    const person = this.personList.find((person) => person.id === id);
     if (person) this.onEdit(person);
   }
 
@@ -49,9 +47,10 @@ export class DashboardComponent implements OnInit {
       queryParamsHandling: 'merge',
     });
 
-    let dialogRef = this.dialog.open(PersonEditDialogComponent, {
-      data: edit_person,
-    });
+    const dialogRef: MatDialogRef<PersonEditDialogComponent, Person> =
+      this.dialog.open(PersonEditDialogComponent, {
+        data: edit_person,
+      });
 
     dialogRef.afterClosed().subscribe((value) => {
       if (value)
