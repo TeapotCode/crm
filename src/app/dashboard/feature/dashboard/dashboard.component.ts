@@ -7,7 +7,11 @@ import {
 import { Person } from '../../utils/person.interface';
 import { PersonEditDialogComponent } from '../../ui/person-edit-dialog/person-edit-dialog.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -27,12 +31,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private changeRef: ChangeDetectorRef,
-    private activatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRouteSnapshot,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.activatedRoute.snapshot.queryParamMap.get('userId'));
+    const id = Number(this.activatedRoute.queryParamMap.get('userId'));
     const person = this.personList.find((person) => person.id === id);
     if (person) this.onEdit(person);
   }

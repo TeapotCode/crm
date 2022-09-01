@@ -6,12 +6,9 @@ import { AuthService } from '../data-access/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class LoggedUserCanAccessGuard implements CanLoad {
+export class AuthGuard implements CanLoad {
   constructor(private auth: AuthService, private router: Router) {}
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]
-  ):
+  canLoad():
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean

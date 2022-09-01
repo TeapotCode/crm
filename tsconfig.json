@@ -3,6 +3,7 @@
   "compileOnSave": false,
   "allowSyntheticDefaultImports": true,
   "compilerOptions": {
+    "esModuleInterop": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

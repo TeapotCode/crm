@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoggedUserCanAccessGuard } from './shared/utils/LoggedUserCanAccess.guard';
+import { AuthGuard } from './shared/utils/auth-guard.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'dashboard',
     loadChildren: async () =>
       (await import('./dashboard/feature/dashboard.module')).DashboardModule,
-    canLoad: [LoggedUserCanAccessGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: '**',

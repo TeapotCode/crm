@@ -11,7 +11,7 @@ export class AuthService {
   public isLoggedIn$ = this.isLoggedIn$$.pipe(delay(0));
 
   constructor() {
-    let value = !!localStorage.getItem(this.key);
+    const value = localStorage.getItem(this.key) === '1';
     this.isLoggedIn$$.next(value);
   }
 
