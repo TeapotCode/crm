@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
+  FormGroup,
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
@@ -20,7 +22,7 @@ export class LoginComponent {
   });
 
   constructor(
-    private fb: NonNullableFormBuilder,
+    private fb: FormBuilder,
     private router: Router,
     private auth: AuthService
   ) {}
