@@ -3,13 +3,12 @@ import {
   AbstractControl,
   FormBuilder,
   FormControl,
-  NonNullableFormBuilder,
   ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../shared/data-access/auth.service';
 import { map } from 'rxjs';
+import { AuthService } from '../../../shared/data-access/auth.service';
 
 @Component({
   selector: 'app-signup',
